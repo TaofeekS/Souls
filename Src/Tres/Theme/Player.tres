@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://Src/Asset/Ttf/Kenney Pixel.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+extra_spacing_top = -1
+font_data = ExtResource( 2 )
+
+[resource]
+default_font = SubResource( 1 )
+GridContainer/constants/hseparation = 0
+GridContainer/constants/vseparation = 0
+MarginContainer/constants/margin_bottom = 4
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 4

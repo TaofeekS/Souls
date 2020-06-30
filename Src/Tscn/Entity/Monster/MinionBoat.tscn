@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Src/Tscn/Tmplt/Monster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Asset/Png/Monster/minion_boat1.png" type="Texture" id=2]
+[ext_resource path="res://Src/Asset/Png/Monster/minion_boat2.png" type="Texture" id=3]
+
+[sub_resource type="AnimatedTexture" id=1]
+flags = 4
+frames = 2
+fps = 2.3
+frame_0/texture = ExtResource( 2 )
+frame_1/texture = ExtResource( 3 )
+frame_1/delay_sec = 0.0
+
+[node name="Monster" instance=ExtResource( 1 )]
+selfie_tex = SubResource( 1 )
+motto_txt = "Family boat with a big sail"

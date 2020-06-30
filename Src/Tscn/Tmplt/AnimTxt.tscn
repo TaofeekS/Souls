@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/Gd/Tmplt/AnimTxt.gd" type="Script" id=1]
+
+[node name="AnimTxt" type="RichTextLabel"]
+margin_right = 148.0
+margin_bottom = 134.0
+bbcode_enabled = true
+bbcode_text = "[shake rate = 10]"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+txt = "Null"
+anim = null

@@ -1,0 +1,116 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "RichTextLabel",
+"class": "AnimTxt",
+"language": "GDScript",
+"path": "res://Src/Gd/Tmplt/AnimTxt.gd"
+}, {
+"base": "MarginContainer",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://Src/Gd/Tmplt/Entity.gd"
+}, {
+"base": "Control",
+"class": "Intro",
+"language": "GDScript",
+"path": "res://Src/Gd/Story/Intro.gd"
+}, {
+"base": "Control",
+"class": "Main",
+"language": "GDScript",
+"path": "res://Src/Gd/Essential/Main.gd"
+}, {
+"base": "Entity",
+"class": "Monster",
+"language": "GDScript",
+"path": "res://Src/Gd/Tmplt/Monster.gd"
+}, {
+"base": "Entity",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Src/Gd/Entity/Player.gd"
+}, {
+"base": "Node2D",
+"class": "Skill",
+"language": "GDScript",
+"path": "res://Src/Gd/Tmplt/Skill.gd"
+}, {
+"base": "TextureButton",
+"class": "SkillBtn",
+"language": "GDScript",
+"path": "res://Src/Gd/Tmplt/SkillBtn.gd"
+} ]
+_global_script_class_icons={
+"AnimTxt": "",
+"Entity": "res://Src/Asset/Png/Monster/minion_dolphin1.png",
+"Intro": "",
+"Main": "",
+"Monster": "res://Src/Asset/Png/Monster/MinionOrc/minion_orc1.png",
+"Player": "res://Src/Asset/Png/Hero/Normal/HeroNormal1.png",
+"Skill": "res://Src/Asset/Png/Skill/Armor.png",
+"SkillBtn": "res://Src/Asset/Png/Skill/Fireball.png"
+}
+
+[application]
+
+config/name="SameSoulManyBodies"
+run/main_scene="res://Src/Tscn/Essential/Menu.tscn"
+config/icon="res://icon.png"
+run/main_scene.editor="res://Src/Tscn/Essential/Main.tscn"
+
+[autoload]
+
+vital="*res://Src/Tscn/Singleton/Vital.tscn"
+
+[debug]
+
+gdscript/warnings/unused_class_variable=true
+gdscript/warnings/unsafe_property_access=true
+gdscript/warnings/unsafe_method_access=true
+gdscript/warnings/unsafe_cast=true
+gdscript/warnings/unsafe_call_argument=true
+
+[display]
+
+window/size/width=300
+window/size/height=512
+window/handheld/orientation="portrait"
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "animated_grid_container_plugin" )
+
+[gui]
+
+theme/custom="res://Src/Tres/Theme/Main.tres"
+
+[input]
+
+tap={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.635294, 0.352941, 0.172549, 1 )
+environment/default_environment="res://default_env.tres"

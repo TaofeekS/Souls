@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/Gd/Tmplt/Skill.gd" type="Script" id=4]
+
+[node name="Skill" type="Node"]
+script = ExtResource( 4 )

@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Src/Gd/Tmplt/Skill.gd" type="Script" id=2]
+[ext_resource path="res://Src/Asset/Png/Skill/Fireball.png" type="Texture" id=3]
+[ext_resource path="res://Src/Tscn/Vfx/Particles/Fireball.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "_mass_drop"
+length = 0.7
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.225 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 57.3089, 29.7826 ), Vector2( 19.8551, 58.2114 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.225, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.55 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.225, 0.375, 0.575 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_strike"
+}, {
+"args": [  ],
+"method": "_strike"
+}, {
+"args": [  ],
+"method": "_strike"
+} ]
+}
+
+[node name="Fireball" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Icon" type="Sprite" parent="."]
+scale = Vector2( 0.0926968, 0.0926968 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Icon"]
+autoplay = "_mass_drop"
+anims/_mass_drop = SubResource( 1 )
+
+[node name="Vfx" parent="Icon" instance=ExtResource( 4 )]
+position = Vector2( 144.499, 156.746 )
+scale = Vector2( 15, 15 )
+emitting = true
+local_coords = false
+[connection signal="animation_finished" from="Icon/AnimationPlayer" to="." method="_anim_finished"]

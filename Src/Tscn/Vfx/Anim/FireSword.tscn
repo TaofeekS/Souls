@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Src/Tscn/Vfx/Particles/FireSword.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Src/Gd/Tmplt/Skill.gd" type="Script" id=2]
+[ext_resource path="res://Src/Asset/Png/Skill/FireSword.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.182979, 0.565957, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.686275, 1, 0.905882, 0.0941176, 0.686275, 1, 0, 0, 0.72549, 0.054902, 0.054902, 0.054902, 0 )
+
+[sub_resource type="Animation" id=2]
+length = 0.7
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Skill/Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 59.5884, 64.1923 ), Vector2( 41.9882, 62.6899 ), Vector2( 36.6223, 63.5484 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Skill/Icon:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.225, 0.5, 0.575 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 168.507, 168.507, 372.147, 401.827, 168.507 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Skill/Icon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.625, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("Skill")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.15, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_strike"
+}, {
+"args": [  ],
+"method": "_strike"
+} ]
+}
+
+[node name="Skill" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 38.6345, 63.2265 )
+rotation = 4.12573
+scale = Vector2( 0.0586526, 0.0613456 )
+texture = ExtResource( 3 )
+offset = Vector2( -101.943, -101.435 )
+
+[node name="Vfx" parent="Icon" instance=ExtResource( 1 )]
+position = Vector2( -78.9764, -55.2561 )
+scale = Vector2( 6, 6 )
+scale_amount = 5.0
+color_ramp = SubResource( 1 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+autoplay = "Slash"
+anims/Slash = SubResource( 2 )
+[connection signal="animation_finished" from="Anim" to="." method="_anim_finished"]

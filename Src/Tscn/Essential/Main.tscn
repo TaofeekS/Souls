@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Src/Tres/Theme/Main.tres" type="Theme" id=2]
+[ext_resource path="res://Src/Tscn/Misc/Main/Dungeon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Tscn/Entity/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Gd/Essential/Main.gd" type="Script" id=5]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_use_anchors_": false
+}
+
+[node name="Middleman" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dungeon" parent="Middleman" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 300.0
+margin_bottom = 418.0
+monster_count = 3
+
+[node name="Player" parent="Middleman" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 422.0
+margin_right = 300.0
+margin_bottom = 512.0
+def_rate = 0.01
+[connection signal="player_named" from="." to="Middleman/Player" method="_set_name"]
+[connection signal="monster_summoned" from="Middleman/Dungeon" to="Middleman/Player" method="_connect_monster"]

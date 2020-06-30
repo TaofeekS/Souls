@@ -1,0 +1,145 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Src/Gd/Misc/Main/Dungeon.gd" type="Script" id=1]
+[ext_resource path="res://Src/Tscn/Entity/Monster/MinionBoat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Asset/Png/Misc/UI_door.png" type="Texture" id=4]
+[ext_resource path="res://Src/Asset/Png/Monster/minion_boat1.png" type="Texture" id=5]
+
+[sub_resource type="Curve" id=1]
+min_value = 1.0
+max_value = 9.0
+_data = [ Vector2( 0, 1.26994 ), 0.0, 0.0, 0, 0, Vector2( 0.338178, 4.5092 ), 0.0, 0.0, 0, 0, Vector2( 0.706395, 2.54601 ), 0.0, 0.0, 0, 0, Vector2( 1, 8.43558 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=2]
+max_value = 2.0
+_data = [ Vector2( 0, 0.377301 ), 0.0, 0.0, 0, 0, Vector2( 0.334302, 1.3681 ), 0.0, 0.0, 0, 0, Vector2( 0.710271, 0.533742 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.95706 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Theme" id=3]
+HBoxContainer/constants/separation = 25
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 35, 35, 307, 307 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.537255, 0.552941, 0.545098, 1 )
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Dungeon" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+frontline_curve = SubResource( 1 )
+stat_curve = SubResource( 2 )
+monster_count = 1
+frontline = NodePath("Frontline")
+monster_pck_list = [ ExtResource( 3 ) ]
+
+[node name="ComingSoon" type="PanelContainer" parent="."]
+margin_right = 300.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 42 )
+size_flags_vertical = 0
+theme = SubResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="ComingSoon"]
+margin_right = 300.0
+margin_bottom = 42.0
+custom_constants/margin_top = 6
+custom_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ComingSoon/MarginContainer"]
+margin_top = 6.0
+margin_right = 300.0
+margin_bottom = 39.0
+custom_constants/separation = 0
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ComingSoon/MarginContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 30.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Monsters" type="HBoxContainer" parent="ComingSoon/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 22.0
+margin_right = 222.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="ComingSoon/MarginContainer/VBoxContainer/HBoxContainer/Monsters"]
+margin_left = 5.0
+margin_right = 35.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 8
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="ComingSoon/MarginContainer/VBoxContainer/HBoxContainer/Monsters"]
+margin_left = 60.0
+margin_right = 90.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 8
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect3" type="TextureRect" parent="ComingSoon/MarginContainer/VBoxContainer/HBoxContainer/Monsters"]
+margin_left = 115.0
+margin_right = 145.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 8
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect4" type="TextureRect" parent="ComingSoon/MarginContainer/VBoxContainer/HBoxContainer/Monsters"]
+margin_left = 170.0
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 8
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="Door" type="TextureRect" parent="ComingSoon/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 247.0
+margin_right = 277.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 0
+texture = SubResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Floor" type="Panel" parent="ComingSoon/MarginContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 300.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 0, 3 )
+size_flags_vertical = 8
+custom_styles/panel = SubResource( 5 )
+
+[node name="Frontline" type="GridContainer" parent="."]
+show_behind_parent = true
+margin_left = 150.0
+margin_top = 279.0
+margin_right = 150.0
+margin_bottom = 279.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+columns = 3

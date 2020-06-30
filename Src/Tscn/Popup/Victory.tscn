@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Src/Tscn/Popup/Endgame.tscn" type="PackedScene" id=1]
+
+[node name="Victory" instance=ExtResource( 1 )]
+msg_label = NodePath("../Victory/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label")
+msg_txt = "Let us erase this pointless world and move on to the next"
+reset_txt = "Sure"
